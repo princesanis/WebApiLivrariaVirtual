@@ -1,0 +1,19 @@
+using Microsoft.EntityFrameworkCore;
+using WebApiLivrariaVirtual.Models;
+
+namespace WebApiLivrariaVirtual.Context
+{
+    public class WebApiContext : DbContext
+    {
+        public WebApiContext(DbContextOptions<TodoContext> options)
+            : base(options)
+        {
+            
+        }
+
+        public DbSet<Autor> Autores { get; set; }
+        public DbSet<Editora> Editoras { get; set; }
+        public DbSet<Livro> Livros { get; set; }
+    }
+    
+}
