@@ -19,21 +19,24 @@ namespace WebApiLivrariaVirtual.Controllers
                 new Livro(){
                               Autores = new List<Autor>(),
                               Comentarios = new List<Comentario>(),
-                              Editora = new Editora(),
+                              //Editora = new Editora(){ Id = 1, Nome = "Editora A", Livros = null },
+                              IdEditora = 1,
                               Id = 1,
                               Preco = 50.0,
                               Titulo = "Livro A" },
                 new Livro(){
                               Autores = new List<Autor>(){ new Autor(){ Id = 2, Nome = "Teste 02"} },
                               Comentarios = new List<Comentario>(),
-                              Editora = new Editora(){ Id = 2, Nome = "Editora 02", Livros = null },
+                              //Editora = new Editora(){ Id = 2, Nome = "Editora B", Livros = null },
+                              IdEditora = 2,
                               Id = 2,
                               Preco = 100.0,
                               Titulo = "Livro B" },
                 new Livro(){
                               Autores = new List<Autor>(),
                               Comentarios = new List<Comentario>(),
-                              Editora = new Editora(),
+                              //Editora = new Editora(){ Id = 3, Nome = "Editora C", Livros = null },
+                              IdEditora = 3,
                               Id = 3,
                               Preco = 150.0,
                               Titulo = "Livro C" }
@@ -42,28 +45,46 @@ namespace WebApiLivrariaVirtual.Controllers
             Editoras = new List<Editora>()
             {
                 new Editora(){
-                            //   Autores = new List<Autor>(),
-                            //   Comentarios = new List<Comentario>(),
-                            //   Editora = new Editora(),
-                            //   Id = 1,
-                            //   Preco = 50.0,
-                            //   Titulo = "Livro A" 
+                               Livros = new List<Livro>(){
+                                                           new Livro(){
+                                                                         Autores = new List<Autor>(),
+                                                                         Comentarios = new List<Comentario>(),
+                                                                         IdEditora = 1,
+                                                                         Id = 1,
+                                                                         Preco = 50.0,
+                                                                         Titulo = "Livro A"
+                                                                      }
+                                                         },
+                               Id = 1,
+                               Nome = "Editora A"
                 },
                 new Editora(){
-                            //   Autores = new List<Autor>(){ new Autor(){ Id = 2, Nome = "Teste 02"} },
-                            //   Comentarios = new List<Comentario>(),
-                            //   Editora = new Editora(){ Id = 2, Nome = "Editora 02", Livros = null },
-                            //   Id = 2,
-                            //   Preco = 100.0,
-                            //   Titulo = "Livro B" 
+                               Livros = new List<Livro>(){
+                                                           new Livro(){
+                                                                         Autores = new List<Autor>(),
+                                                                         Comentarios = new List<Comentario>(),
+                                                                         IdEditora = 2,
+                                                                         Id = 2,
+                                                                         Preco = 100.0,
+                                                                         Titulo = "Livro B"
+                                                                      }
+                                                         },
+                               Id = 2,
+                               Nome = "Editora B"
                 },
                 new Editora(){
-                            //   Autores = new List<Autor>(),
-                            //   Comentarios = new List<Comentario>(),
-                            //   Editora = new Editora(),
-                            //   Id = 3,
-                            //   Preco = 150.0,
-                            //   Titulo = "Livro C"
+                               Livros = new List<Livro>(){
+                                                           new Livro(){
+                                                                         Autores = new List<Autor>(),
+                                                                         Comentarios = new List<Comentario>(),
+                                                                         IdEditora = 3,
+                                                                         Id = 3,
+                                                                         Preco = 150.0,
+                                                                         Titulo = "Livro C"
+                                                                      }
+                                                         },
+                               Id = 3,
+                               Nome = "Editora C"
                 }
             };
         }
@@ -77,7 +98,7 @@ namespace WebApiLivrariaVirtual.Controllers
 
         // GET livraria-virtual/editoras/{editoraId}
         [HttpGet("{editoraId}")]
-        public IActionResult BuscarEditorasPorId(int editoraId)
+        public IActionResult BuscarEditoraPorId(int editoraId)
         {
             if (editoraId == 0)
                 return BadRequest();
@@ -98,8 +119,8 @@ namespace WebApiLivrariaVirtual.Controllers
                 return BadRequest();
 
             //Editora livro = Editoras.Where(e => e.Id == editoraId).FirstOrDefault();
-
-            List<Livro> listaLivros = Livros.Where(l => l.Editora != null && l.Editora.Id == editoraId).ToList();
+            
+            List<Livro> listaLivros = Livros.Where(l => l.IdEditora == editoraId).ToList();
 
             if (listaLivros.Count <= 0)
                 return NotFound("Livro(s) não encontrado(s) para esta editora.");
@@ -114,12 +135,13 @@ namespace WebApiLivrariaVirtual.Controllers
             if (livroId == 0)
                 return NotFound();
 
-            List<Livro> listaLivros = Livros.Where(l => l.Editora != null && l.Editora.Id == editoraId).ToList();
+            // List<Livro> listaLivros = Livros.Where(l => l.Editora != null && l.Editora.Id == editoraId).ToList();
+            List<Livro> listaLivros = Livros.Where(l => l.IdEditora == editoraId).ToList();
 
             var livro = listaLivros.Where(l => l.Id == livroId).FirstOrDefault();
 
             if (livro == null)
-                return NotFound("Livro não encontrado.");            
+                return NotFound("Livro não encontrado.");
 
             return Ok(livro);
         }
@@ -128,29 +150,47 @@ namespace WebApiLivrariaVirtual.Controllers
         [HttpPost]
         public IActionResult CriarEditora([FromBody] Editora editora)
         {
-            //TODO: Implementar o método
+            if (editora == null)
+                return BadRequest("Não foi possível criar a editora.");
 
-            return Ok();
+            // var novaEditora = new Editora(){
+
+            //                                };
+
+            return CreatedAtAction("BuscarEditoraPorId", new { id = editora.Id, editora });
         }
 
 
         // PUT v1/livraria-virtual/editoras/{editoraId}
         [HttpPut("{editoraId}")]
-        public IActionResult AtualizarEditora(int editoraId, [FromBody]Editora editora)
+        public IActionResult AtualizarEditora([FromRoute] int editoraId, [FromBody]Editora editora)
         {
-            //TODO: Implementar o método
+            if (editoraId != editora.Id)
+                return BadRequest();
 
-            return Ok();
+            if (!EditoraExiste(editoraId))
+                return NotFound();
+
+            return NoContent();
         }
-
 
         // DELETE v1/livraria-virtual/editoras/{editoraId}
         [HttpDelete("{editoraId}")]
-        public IActionResult ExcluirEditora(int editoraId, [FromBody]Editora editora)
+        public IActionResult ExcluirEditora([FromRoute] int editoraId)
         {
-            //TODO: Implementar o método
+            var editora = Editoras.Find(e => e.Id == editoraId);
 
-            return Ok();
+            if (editora == null)
+                return NotFound();
+
+            Editoras.Remove(editora);
+
+            return Ok(editora);
+        }
+
+        private bool EditoraExiste(int id)
+        {
+            return Editoras.Any(e => e.Id == id);
         }
     }
 }
