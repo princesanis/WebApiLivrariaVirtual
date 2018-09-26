@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
@@ -15,40 +15,93 @@ namespace WebApiLivrariaVirtual.Controllers
         {
             Livros = new List<Livro>()
             {
-                new Livro(){
-                              Autores = new List<Autor>(),
-                              Comentarios = new List<Comentario>(),
-                              Editora = new Editora(),
+                new Livro(){  
                               Id = 1,
-                              Preco = 50.0,
-                              Titulo = "Livro A" },
+                              Titulo = "Designing Software Architectures: A Practical Approach (SEI Series in Software Engineering)",
+                              IdEditora = 1,
+                              NomeEditora = "Addison-Wesley Professional; 1 edition (May 23, 2016)",
+                              CodigoISBN13 = "978-0134390789",
+                              CodigoISBN10 = "0134390784",
+                              NumeroPaginas = 320,
+                              Edicao = "First Edition",                              
+                              Idioma = "English",
+                              Formato = "Hardcover",
+                              Preco = 35.99,
+                              Autores = new List<Autor>(){ 
+                                                            new Autor(){ Id = 10, Nome = "Humberto Cervantes"},
+                                                            new Autor(){ Id = 11, Nome = "Rick Kazman"}
+                                                         },
+                              Comentarios = new List<Comentario>(){
+                                                                     new Comentario(){ Id = 4, Titulo = "Comentário 01", Descricao = "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit." },
+                                                                     new Comentario(){ Id = 5, Titulo = "Comentário 02", Descricao = "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit." },
+                                                                     new Comentario(){ Id = 6, Titulo = "Comentário 03", Descricao = "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit." },
+                                                                  }                              
+                           },
                 new Livro(){
-                              Autores = new List<Autor>(){ new Autor(){ Id = 2, Nome = "Teste 02"} },
-                              Comentarios = new List<Comentario>(),
-                              Editora = new Editora(){ Id = 2, Nome = "Editora 02", Livros = null },
                               Id = 2,
-                              Preco = 100.0,
-                              Titulo = "Livro B" },
+                              Titulo = "Documenting Software Architectures: Views and Beyond (2nd Edition)",
+                              IdEditora = 2,
+                              NomeEditora = "Addison-Wesley Professional; 2 edition (October 15, 2010)",
+                              CodigoISBN13 = "978-0321552686",
+                              CodigoISBN10 = "0321552687",
+                              NumeroPaginas = 592,
+                              Edicao = "Second Edition",                              
+                              Idioma = "English",
+                              Formato = "Hardcover",
+                              Preco = 43.19,
+                              Autores = new List<Autor>(){ 
+                                                            new Autor(){ Id = 1, Nome = "Paul Clements"},
+                                                            new Autor(){ Id = 2, Nome = "Felix Bachmann"},
+                                                            new Autor(){ Id = 3, Nome = "Len Bass"},
+                                                            new Autor(){ Id = 4, Nome = "David Garlan"},
+                                                            new Autor(){ Id = 5, Nome = "James Ivers"},
+                                                            new Autor(){ Id = 6, Nome = "Reed Little"},
+                                                            new Autor(){ Id = 7, Nome = "Paulo Merson"},
+                                                            new Autor(){ Id = 8, Nome = "Robert Nord"},
+                                                            new Autor(){ Id = 9, Nome = "Judith Stafford"}                                                                                                                       
+                                                         },
+                              Comentarios = new List<Comentario>(){
+                                                                     new Comentario(){ Id = 1, Titulo = "Comentário 01", Descricao = "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit." },
+                                                                     new Comentario(){ Id = 2, Titulo = "Comentário 02", Descricao = "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit." },
+                                                                     new Comentario(){ Id = 3, Titulo = "Comentário 03", Descricao = "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit." },
+                                                                  }                             
+                           },
                 new Livro(){
-                              Autores = new List<Autor>(),
-                              Comentarios = new List<Comentario>(),
-                              Editora = new Editora(),
                               Id = 3,
-                              Preco = 150.0,
-                              Titulo = "Livro C" }
+                              Titulo = "Software Architecture in Practice (3rd Edition) (SEI Series in Software Engineering)",
+                              IdEditora = 3,
+                              NomeEditora = "Addison-Wesley Professional",
+                              CodigoISBN13 = "978-0321815736",
+                              CodigoISBN10 = "9780321815736",
+                              Edicao = "Third Edition",
+                              NumeroPaginas = 624,
+                              Idioma = "English",
+                              Formato = "Hardcover",
+                              Preco = 65.19,
+                              Autores = new List<Autor>(){ 
+                                                            new Autor(){ Id = 1, Nome = "Paul Clements"},
+                                                            new Autor(){ Id = 3, Nome = "Len Bass"},
+                                                            new Autor(){ Id = 11, Nome = "Rick Kazman"}
+                                                         },
+                              Comentarios = new List<Comentario>(){
+                                                                     new Comentario(){ Id = 6, Titulo = "Comentário 01", Descricao = "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit." },
+                                                                     new Comentario(){ Id = 7, Titulo = "Comentário 02", Descricao = "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit." },
+                                                                     new Comentario(){ Id = 8, Titulo = "Comentário 03", Descricao = "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit." },
+                                                                  }                              
+                           }
             };
         }
 
         // GET livraria-virtual/livros
         [HttpGet]
-        public IEnumerable<Livro> Get()
+        public IEnumerable<Livro> BuscarTodosLivros()
         {
             return Livros.ToList();
         }
 
         // GET livraria-virtual/livros/{livroId}
-        [HttpGet("{livroId}")]
-        public IActionResult Get(int livroId)
+        [HttpGet("{livroId}", Name = "BuscarLivroPorId")]
+        public IActionResult BuscarLivroPorId(int livroId)
         {
             if (livroId == 0)
                 return BadRequest();
@@ -140,9 +193,19 @@ namespace WebApiLivrariaVirtual.Controllers
         [HttpPost]
         public IActionResult CriarLivro([FromBody] Livro livro)
         {
-            //TODO: Implementar o método
+            if (livro == null)
+                return BadRequest("Não foi possível criar o livro.");
 
-            return Ok();
+            var filtroLivro = Livros.OrderByDescending(l => l.Id).FirstOrDefault();
+
+            var novoLivro = new Livro(){
+                                              Id = filtroLivro.Id + 1,
+                                              Titulo = livro.Titulo
+                                           };
+
+            Livros.Add(novoLivro);
+
+            return CreatedAtRoute(routeName: "BuscarLivroPorId", routeValues: new { livroId = novoLivro.Id }, value: livro);
         }
 
 
@@ -150,9 +213,17 @@ namespace WebApiLivrariaVirtual.Controllers
         [HttpPut("{livroId}")]
         public IActionResult AtualizarLivro(int livroId, [FromBody]Livro livro)
         {
-            //TODO: Implementar o método
+            if (livroId != livro.Id)
+                return BadRequest();
 
-            return Ok();
+            if (!LivroExiste(livroId))
+                return NotFound();
+
+            var livroSelecionado = Livros.Find(l => l.Id == livroId);
+
+            if (livroSelecionado != null) livroSelecionado.Titulo = livro.Titulo;
+
+            return NoContent();
         }
 
 
@@ -160,9 +231,19 @@ namespace WebApiLivrariaVirtual.Controllers
         [HttpDelete("{livroId}")]
         public IActionResult ExcluirLivro(int livroId, [FromBody]Livro livro)
         {
-            //TODO: Implementar o método
+            var livroSelecionado = Livros.Find(l => l.Id == livroId);
 
-            return Ok();
+            if (livroSelecionado == null)
+                return NotFound();
+
+            Livros.Remove(livroSelecionado);
+
+            return Ok(livroSelecionado);
+        }
+
+        private bool LivroExiste(int id)
+        {
+            return Livros.Any(e => e.Id == id);
         }
     }
 }

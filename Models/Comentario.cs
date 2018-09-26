@@ -1,4 +1,6 @@
 
+using System;
+
 namespace WebApiLivrariaVirtual.Models
 {
     public class Comentario

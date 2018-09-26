@@ -1,4 +1,0 @@
-C:\Users\755073\Codes\WebApiLivrariaVirtual\obj\Debug\netcoreapp2.0\WebApiLivrariaVirtual.csprojResolveAssemblyReference.cache
-C:\Users\755073\Codes\WebApiLivrariaVirtual\obj\Debug\netcoreapp2.0\WebApiLivrariaVirtual.csproj.CoreCompileInputs.cache
-C:\Users\755073\Codes\WebApiLivrariaVirtual\obj\Debug\netcoreapp2.0\WebApiLivrariaVirtual.AssemblyInfoInputs.cache
-C:\Users\755073\Codes\WebApiLivrariaVirtual\obj\Debug\netcoreapp2.0\WebApiLivrariaVirtual.AssemblyInfo.cs
