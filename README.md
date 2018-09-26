@@ -13,43 +13,43 @@
 
 ### Autor
   
-  - GET v1/livraria-virtual/autores
-  - GET v1/livraria-virtual/autores/{autorId}
-  - POST v1/livraria-virtual/autores
-  - PUT v1/livraria-virtual/autores/{autorId}
-  - DELETE v1/livraria-virtual/autores/{autorId}
+  - GET /livraria-virtual/v{apiversion}/autores
+  - GET /livraria-virtual/v{apiversion}/autores/{autorId}
+  - POST /livraria-virtual/v{apiversion}/autores
+  - PUT /livraria-virtual/v{apiversion}/autores/{autorId}
+  - DELETE /livraria-virtual/v{apiversion}/autores/{autorId}
   
 ### Editora
 
-  - GET v1/livraria-virtual/editoras
-  - GET v1/livraria-virtual/editoras/{editoraId}
-  - GET v1/livraria-virtual/editoras/{editoraId}/livros  
-  - GET v1/livraria-virtual/editoras/{editoraId}/livros/{livroId}
-  - POST v1/livraria-virtual/editoras
-  - PUT v1/livraria-virtual/editoras/{editoraId}
-  - DELETE v1/livraria-virtual/editoras/{editoraId}
+  - GET /livraria-virtual/v{apiversion}/editoras
+  - GET /livraria-virtual/v{apiversion}/editoras/{editoraId}
+  - GET /livraria-virtual/v{apiversion}/editoras/{editoraId}/livros  
+  - GET /livraria-virtual/v{apiversion}/editoras/{editoraId}/livros/{livroId}
+  - POST /livraria-virtual/v{apiversion}/editoras
+  - PUT /livraria-virtual/v{apiversion}/editoras/{editoraId}
+  - DELETE /livraria-virtual/v{apiversion}/editoras/{editoraId}
   
 ### Livro
 
-  - GET v1/livraria-virtual/livros
-  - GET v1/livraria-virtual/livros/{livroId}
-  - GET v1/livraria-virtual/livros/{livroId}/autores  
-  - GET v1/livraria-virtual/livros/{livroId}/autores/{autorId}
-  - GET v1/livraria-virtual/livros/{livroId}/comentarios
-  - GET v1/livraria-virtual/livros/{livroId}/comentarios/{comentarioId}
-  - POST v1/livraria-virtual/livros
-  - PUT v1/livraria-virtual/livros/{livroId}
-  - DELETE v1/livraria-virtual/livros/{livroId}
+  - GET /livraria-virtual/v{apiversion}/livros
+  - GET /livraria-virtual/v{apiversion}/livros/{livroId}
+  - GET /livraria-virtual/v{apiversion}/livros/{livroId}/autores  
+  - GET /livraria-virtual/v{apiversion}/livros/{livroId}/autores/{autorId}
+  - GET /livraria-virtual/v{apiversion}/livros/{livroId}/comentarios
+  - GET /livraria-virtual/v{apiversion}/livros/{livroId}/comentarios/{comentarioId}
+  - POST /livraria-virtual/v{apiversion}/livros
+  - PUT /livraria-virtual/v{apiversion}/livros/{livroId}
+  - DELETE /livraria-virtual/v{apiversion}/livros/{livroId}
   
 ### Carrinho de Compras
 
-  - GET v1/livraria-virtual/carrinhos/{carrinhoId}
-  - PUT v1/livraria-virtual/carrinhos/{carrinhoId}/livros/{livroId}
-  - DELETE v1/livraria-virtual/carrinhos/{carrinhoId}
-  - DELETE v1/livraria-virtual/carrinhos/{carrinhoId}/livros/{livroId}
+  - GET /livraria-virtual/v{apiversion}/carrinhos/{carrinhoId}
+  - PUT /livraria-virtual/v{apiversion}/carrinhos/{carrinhoId}/livros/{livroId}
+  - DELETE /livraria-virtual/v{apiversion}/carrinhos/{carrinhoId}
+  - DELETE /livraria-virtual/v{apiversion}/carrinhos/{carrinhoId}/livros/{livroId}
   
 ### Pedidos
 
-  - GET v1/livraria-virtual/pedidos
-  - GET v1/livraria-virtual/pedidos/{pedidoId}
-  - POST v1/livraria-virtual/pedidos
+  - GET /livraria-virtual/v{apiversion}/pedidos
+  - GET /livraria-virtual/v{apiversion}/pedidos/{pedidoId}
+  - POST /livraria-virtual/v{apiversion}/pedidos
