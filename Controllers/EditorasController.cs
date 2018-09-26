@@ -189,7 +189,7 @@ namespace WebApiLivrariaVirtual.Controllers
 
             Editoras.Remove(editora);
 
-            return Ok(editora);
+            return Ok();
         }
 
         private bool EditoraExiste(int id)

@@ -186,7 +186,7 @@ namespace WebApiLivrariaVirtual.Controllers
 
             Autores.Remove(autorSelecionado);
 
-            return Ok(autorSelecionado);
+            return Ok();
         }
 
         private bool AutorExiste(int id)

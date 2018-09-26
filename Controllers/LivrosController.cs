@@ -238,7 +238,7 @@ namespace WebApiLivrariaVirtual.Controllers
 
             Livros.Remove(livroSelecionado);
 
-            return Ok(livroSelecionado);
+            return Ok();
         }
 
         private bool LivroExiste(int id)
