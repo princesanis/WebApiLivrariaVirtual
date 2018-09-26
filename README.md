@@ -52,3 +52,4 @@
 
   - GET v1/livraria-virtual/pedidos
   - GET v1/livraria-virtual/pedidos/{pedidoId}
+  - POST v1/livraria-virtual/pedidos
