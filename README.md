@@ -44,7 +44,7 @@
 ### Carrinho de Compras
 
   - GET v1/livraria-virtual/carrinhos/{carrinhoId}
-  - POST v1/livraria-virtual/carrinhos/{carrinhoId}/livros/{livroId}
+  - PUT v1/livraria-virtual/carrinhos/{carrinhoId}/livros/{livroId}
   - DELETE v1/livraria-virtual/carrinhos/{carrinhoId}
   - DELETE v1/livraria-virtual/carrinhos/{carrinhoId}/livros/{livroId}
   
