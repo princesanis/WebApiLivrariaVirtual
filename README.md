@@ -15,8 +15,6 @@
   
   - GET v1/livraria-virtual/autores
   - GET v1/livraria-virtual/autores/{autorId}
-  - GET v1/livraria-virtual/autores/{autorId}/livros
-  - GET v1/livraria-virtual/autores/{autorId}/livros/{livroId}
   - POST v1/livraria-virtual/autores
   - PUT v1/livraria-virtual/autores/{autorId}
   - DELETE v1/livraria-virtual/autores/{autorId}
