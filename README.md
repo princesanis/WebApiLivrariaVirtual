@@ -52,8 +52,4 @@
 
   - GET v1/livraria-virtual/pedidos
   - GET v1/livraria-virtual/pedidos/{pedidoId}
-  
-### Entregas Realizadas
-
-  - GET v1/livria-virtual/entregas
-  - GET v1/livria-virtual/entregas/{entregaId}  
+  - POST v1/livraria-virtual/pedidos
