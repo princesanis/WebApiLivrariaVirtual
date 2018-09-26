@@ -11,11 +11,11 @@ using WebApiLivrariaVirtual.Models;
 namespace WebApiLivrariaVirtual.Controllers
 {
     [Route("livraria-virtual/[controller]")]
-    public class CarrinhoComprasController : Controller
+    public class CarrinhosController : Controller
     {
         private static IDictionary<int, Carrinho> Carrinhos = new Dictionary<int, Carrinho>();
 
-        public CarrinhoComprasController()
+        public CarrinhosController()
         {
             Carrinhos.Add(1, new Carrinho(1, new List<Livro>()));
             Carrinhos.Add(2, new Carrinho(2, new List<Livro>()));
@@ -50,7 +50,7 @@ namespace WebApiLivrariaVirtual.Controllers
                 Carrinhos.Add(carrinhoId, carrinho);
             }
 
-            Livro livro = BuscarLivroPorId(livroId).Result;
+            Livro livro = new Livro();
 
             if (!carrinho.Livros.Contains(livro)) 
                 carrinho.Livros.Add(livro);
@@ -76,8 +76,8 @@ namespace WebApiLivrariaVirtual.Controllers
         }
 
         // DELETE v1/livraria-virtual/carrinhos/{carrinhoId}/livros/{livroId}
-        [HttpDelete("{carrinhoId}")]
-        public IActionResult ExcluirLivroCarrinho(int carrinhoId, [FromRoute] int livroId)
+        [HttpDelete("{carrinhoId}/livros/{livroId}")]
+        public IActionResult ExcluirLivroCarrinho(int carrinhoId, int livroId)
         {
             Carrinho carrinho  = null;
 
@@ -93,26 +93,6 @@ namespace WebApiLivrariaVirtual.Controllers
             }
 
             return NotFound("O carrinho não foi encontrado.");
-        }
-
-        public async Task<Livro> BuscarLivroPorId(int livroId) 
-        {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("http://localhost:5000/");
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                HttpResponseMessage response =  client.GetAsync("livraria-virtual/livros/"+ livroId).Result;
-
-                if(response.IsSuccessStatusCode)
-                {
-                    string result = await response.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<Livro>(result);
-                }
-
-                return null;
-            }
-        }        
+        }       
     }
 }
