@@ -85,14 +85,14 @@ namespace WebApiLivrariaVirtual.Controllers
                                     };            
         }
 
-        // GET /livraria-virtual/autores
+        // GET /livraria-virtual/v{apiversion}/autores
         [HttpGet]
         public IEnumerable<Autor> BuscarAutores()
         {
             return Autores.ToList();
         }
 
-        // GET /livraria-virtual/autores/{autorId}
+        // GET /livraria-virtual/v{apiversion}/autores/{autorId}
         [HttpGet("{autorId}", Name = "BuscarAutorPorId")]
         public IActionResult BuscarAutorPorId(int autorId)
         {
@@ -107,7 +107,7 @@ namespace WebApiLivrariaVirtual.Controllers
             return Ok(autor);
         }
 
-        // GET /livraria-virtual/autores/{autorId}/livros
+        // GET /livraria-virtual/v{apiversion}/autores/{autorId}/livros
         // [HttpGet("{autorId}/livros")]
         // public IActionResult BuscarLivrosDoAutor(int autorId)
         // {
@@ -122,7 +122,7 @@ namespace WebApiLivrariaVirtual.Controllers
         //     return Ok(listaRetorno.ToList());
         // }
 
-        // GET /livraria-virtual/autores/{autorId}/livros/{livroId}
+        // GET /livraria-virtual/v{apiversion}/autores/{autorId}/livros/{livroId}
         // [HttpGet("{autorId}/livros/{livroId}")]
         // public IActionResult BuscarLivroDoAutor(int autorId, int livroId)
         // {
@@ -139,7 +139,7 @@ namespace WebApiLivrariaVirtual.Controllers
         //     return Ok(livro);
         // }
 
-        // POST /livraria-virtual/autores
+        // POST /livraria-virtual/v{apiversion}/autores
         [HttpPost]
         public IActionResult CriarAutor([FromBody] Autor autor)
         {
@@ -159,7 +159,7 @@ namespace WebApiLivrariaVirtual.Controllers
         }
 
 
-        // PUT /livraria-virtual/autores/{autorId}
+        // PUT /livraria-virtual/v{apiversion}/autores/{autorId}
         [HttpPut("{autorId}")]
         public IActionResult AtualizarAutor([FromRoute] int autorId, [FromBody]Autor autor)
         {
@@ -176,7 +176,7 @@ namespace WebApiLivrariaVirtual.Controllers
             return NoContent();
         }
 
-        // DELETE /livraria-virtual/autores/{autorId}
+        // DELETE /livraria-virtual/v{apiversion}/autores/{autorId}
         [HttpDelete("{autorId}")]
         public IActionResult ExcluirAutor([FromRoute] int autorId)
         {

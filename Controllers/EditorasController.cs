@@ -87,14 +87,14 @@ namespace WebApiLivrariaVirtual.Controllers
                                     };            
         }
 
-        // GET /livraria-virtual/editoras
+        // GET /livraria-virtual/v{apiversion}/editoras
         [HttpGet]
         public IEnumerable<Editora> BuscarEditoras()
         {
             return Editoras.ToList();
         }
 
-        // GET /livraria-virtual/editoras/{editoraId}
+        // GET /livraria-virtual/v{apiversion}/editoras/{editoraId}
         [HttpGet("{editoraId}", Name = "BuscarEditoraPorId")]
         public IActionResult BuscarEditoraPorId(int editoraId)
         {
@@ -109,7 +109,7 @@ namespace WebApiLivrariaVirtual.Controllers
             return Ok(editora);
         }
 
-        // GET /livraria-virtual/editoras/{editoraId}/livros
+        // GET /livraria-virtual/v{apiversion}/editoras/{editoraId}/livros
         [HttpGet("{editoraId}/livros")]
         public IActionResult BuscarLivrosDaEditora(int editoraId)
         {
@@ -124,7 +124,7 @@ namespace WebApiLivrariaVirtual.Controllers
             return Ok(listaRetorno.ToList());
         }
 
-        // GET /livraria-virtual/editoras/{editoraId}/livros/{livroId}
+        // GET /livraria-virtual/v{apiversion}/editoras/{editoraId}/livros/{livroId}
         [HttpGet("{editoraId}/livros/{livroId}")]
         public IActionResult BuscarLivroDaEditora(int editoraId, int livroId)
         {
@@ -142,7 +142,7 @@ namespace WebApiLivrariaVirtual.Controllers
             return Ok(livro);
         }
 
-        // POST /livraria-virtual/editoras
+        // POST /livraria-virtual/v{apiversion}/editoras
         [HttpPost]
         public IActionResult CriarEditora([FromBody] Editora editora)
         {
@@ -162,7 +162,7 @@ namespace WebApiLivrariaVirtual.Controllers
         }
 
 
-        // PUT /livraria-virtual/editoras/{editoraId}
+        // PUT /livraria-virtual/v{apiversion}/editoras/{editoraId}
         [HttpPut("{editoraId}")]
         public IActionResult AtualizarEditora([FromRoute] int editoraId, [FromBody]Editora editora)
         {
@@ -179,7 +179,7 @@ namespace WebApiLivrariaVirtual.Controllers
             return NoContent();
         }
 
-        // DELETE /livraria-virtual/editoras/{editoraId}
+        // DELETE /livraria-virtual/v{apiversion}/editoras/{editoraId}
         [HttpDelete("{editoraId}")]
         public IActionResult ExcluirEditora([FromRoute] int editoraId)
         {

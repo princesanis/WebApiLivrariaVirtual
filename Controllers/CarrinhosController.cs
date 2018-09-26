@@ -23,7 +23,7 @@ namespace WebApiLivrariaVirtual.Controllers
             Carrinhos.Add(3, new Carrinho(3, new List<Livro>()));
         }
 
-        // GET /livraria-virtual/carrinhos/{carrinhoId}
+        // GET /livraria-virtual/v{apiversion}/carrinhos/{carrinhoId}
         [HttpGet("{carrinhoId}")]
         public IActionResult BuscarLivrosCarrinho(int carrinhoId)
         {            
@@ -37,7 +37,7 @@ namespace WebApiLivrariaVirtual.Controllers
             return NotFound("O carrinho não foi encontrado.");
         }
 
-        // PUT /livraria-virtual/carrinhos/{carrinhoId}/livros/{livroId}
+        // PUT /livraria-virtual/v{apiversion}/carrinhos/{carrinhoId}/livros/{livroId}
         [HttpPut("{carrinhoId}/livros/{livroId}")]
         public IActionResult AdicionarLivro(int carrinhoId, int livroId)
         {
@@ -59,7 +59,7 @@ namespace WebApiLivrariaVirtual.Controllers
             return Ok(livro);
         }
 
-        // DELETE /livraria-virtual/carrinhos/{carrinhoId}
+        // DELETE /livraria-virtual/v{apiversion}/carrinhos/{carrinhoId}
         [HttpDelete("{carrinhoId}")]
         public IActionResult EsvaziarCarrinho(int carrinhoId)
         {
@@ -76,7 +76,7 @@ namespace WebApiLivrariaVirtual.Controllers
             return NotFound("O carrinho não foi encontrado.");
         }
 
-        // DELETE /livraria-virtual/carrinhos/{carrinhoId}/livros/{livroId}
+        // DELETE /livraria-virtual/v{apiversion}/carrinhos/{carrinhoId}/livros/{livroId}
         [HttpDelete("{carrinhoId}/livros/{livroId}")]
         public IActionResult ExcluirLivroCarrinho(int carrinhoId, int livroId)
         {

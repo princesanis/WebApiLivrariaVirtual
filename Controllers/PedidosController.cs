@@ -43,14 +43,14 @@ namespace WebApiLivrariaVirtual.Controllers
             };
         }
 
-        // GET /livraria-virtual/pedidos
+        // GET /livraria-virtual/v{apiversion}/pedidos
         [HttpGet]
         public IEnumerable<Pedido> BuscarPedidos()
         {
             return Pedidos.ToList();
         }
 
-        // GET /livraria-virtual/pedidos/{pedidoId}
+        // GET /livraria-virtual/v{apiversion}/pedidos/{pedidoId}
         [HttpGet("{pedidoId}", Name = "BuscarPedidoPorId")]
         public IActionResult BuscarPedidoPorId(int pedidoId)
         {
@@ -65,7 +65,7 @@ namespace WebApiLivrariaVirtual.Controllers
             return Ok(pedido);
         }
 
-        // POST /livraria-virtual/pedidos
+        // POST /livraria-virtual/v{apiversion}/pedidos
         [HttpPost]
         public IActionResult CriarPedido([FromBody] Pedido pedido)
         {
