@@ -6,7 +6,8 @@ using static WebApiLivrariaVirtual.Models.Pedido;
 
 namespace WebApiLivrariaVirtual.Controllers
 {
-    [Route("livraria-virtual/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("livraria-virtual/v{version:apiversion}/[controller]")]
     public class PedidosController : Controller
     {
         private static List<Pedido> Pedidos;
@@ -42,14 +43,14 @@ namespace WebApiLivrariaVirtual.Controllers
             };
         }
 
-        // GET v1/livraria-virtual/pedidos
+        // GET /livraria-virtual/pedidos
         [HttpGet]
         public IEnumerable<Pedido> BuscarPedidos()
         {
             return Pedidos.ToList();
         }
 
-        // GET v1/livraria-virtual/pedidos/{pedidoId}
+        // GET /livraria-virtual/pedidos/{pedidoId}
         [HttpGet("{pedidoId}", Name = "BuscarPedidoPorId")]
         public IActionResult BuscarPedidoPorId(int pedidoId)
         {
@@ -64,7 +65,7 @@ namespace WebApiLivrariaVirtual.Controllers
             return Ok(pedido);
         }
 
-        // POST v1/livraria-virtual/pedidos
+        // POST /livraria-virtual/pedidos
         [HttpPost]
         public IActionResult CriarPedido([FromBody] Pedido pedido)
         {

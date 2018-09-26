@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,6 +27,7 @@ namespace WebApiLivrariaVirtual
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddApiVersioning(o => o.ApiVersionReader = new HeaderApiVersionReader("api-version"));
 
             services.AddSwaggerGen(c =>
             {

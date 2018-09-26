@@ -10,7 +10,8 @@ using WebApiLivrariaVirtual.Models;
 
 namespace WebApiLivrariaVirtual.Controllers
 {
-    [Route("livraria-virtual/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("livraria-virtual/v{version:apiversion}/[controller]")]
     public class CarrinhosController : Controller
     {
         private static IDictionary<int, Carrinho> Carrinhos = new Dictionary<int, Carrinho>();
@@ -22,7 +23,7 @@ namespace WebApiLivrariaVirtual.Controllers
             Carrinhos.Add(3, new Carrinho(3, new List<Livro>()));
         }
 
-        // GET v1/livraria-virtual/carrinhos/{carrinhoId}
+        // GET /livraria-virtual/carrinhos/{carrinhoId}
         [HttpGet("{carrinhoId}")]
         public IActionResult BuscarLivrosCarrinho(int carrinhoId)
         {            
@@ -36,7 +37,7 @@ namespace WebApiLivrariaVirtual.Controllers
             return NotFound("O carrinho não foi encontrado.");
         }
 
-        // PUT v1/livraria-virtual/carrinhos/{carrinhoId}/livros/{livroId}
+        // PUT /livraria-virtual/carrinhos/{carrinhoId}/livros/{livroId}
         [HttpPut("{carrinhoId}/livros/{livroId}")]
         public IActionResult AdicionarLivro(int carrinhoId, int livroId)
         {
@@ -58,7 +59,7 @@ namespace WebApiLivrariaVirtual.Controllers
             return Ok(livro);
         }
 
-        // DELETE v1/livraria-virtual/carrinhos/{carrinhoId}
+        // DELETE /livraria-virtual/carrinhos/{carrinhoId}
         [HttpDelete("{carrinhoId}")]
         public IActionResult EsvaziarCarrinho(int carrinhoId)
         {
@@ -75,7 +76,7 @@ namespace WebApiLivrariaVirtual.Controllers
             return NotFound("O carrinho não foi encontrado.");
         }
 
-        // DELETE v1/livraria-virtual/carrinhos/{carrinhoId}/livros/{livroId}
+        // DELETE /livraria-virtual/carrinhos/{carrinhoId}/livros/{livroId}
         [HttpDelete("{carrinhoId}/livros/{livroId}")]
         public IActionResult ExcluirLivroCarrinho(int carrinhoId, int livroId)
         {

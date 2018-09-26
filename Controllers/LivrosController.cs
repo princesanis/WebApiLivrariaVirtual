@@ -6,7 +6,8 @@ using WebApiLivrariaVirtual.Models;
 
 namespace WebApiLivrariaVirtual.Controllers
 {
-    [Route("livraria-virtual/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("livraria-virtual/v{version:apiversion}/[controller]")]
     public class LivrosController : Controller
     {
         private static List<Livro> Livros;
@@ -92,14 +93,14 @@ namespace WebApiLivrariaVirtual.Controllers
             };
         }
 
-        // GET livraria-virtual/livros
+        // GET /livraria-virtual/livros
         [HttpGet]
         public IEnumerable<Livro> BuscarTodosLivros()
         {
             return Livros.ToList();
         }
 
-        // GET livraria-virtual/livros/{livroId}
+        // GET /livraria-virtual/livros/{livroId}
         [HttpGet("{livroId}", Name = "BuscarLivroPorId")]
         public IActionResult BuscarLivroPorId(int livroId)
         {
@@ -114,7 +115,7 @@ namespace WebApiLivrariaVirtual.Controllers
             return Ok(livro);
         }
 
-        // GET v1/livraria-virtual/livros/{livroId}/autores
+        // GET /livraria-virtual/livros/{livroId}/autores
         [HttpGet("{livroId}/autores")]
         public IActionResult BuscarAutoresDoLivro(int livroId)
         {
@@ -140,7 +141,7 @@ namespace WebApiLivrariaVirtual.Controllers
             return Ok(listaAutores.ToList());
         }
 
-        // GET v1/livraria-virtual/livros/{livroId}/autores/{autorId}
+        // GET /livraria-virtual/livros/{livroId}/autores/{autorId}
         [HttpGet("{livroId}/autores/{autorId}")]
         public IActionResult BuscarLivrosPorAutor(int autorId)
         {
@@ -155,7 +156,7 @@ namespace WebApiLivrariaVirtual.Controllers
             return Ok(listaLivrosDoAutor.ToList());
         }
 
-        // GET v1/livraria-virtual/livros/{livroId}/comentarios
+        // GET /livraria-virtual/livros/{livroId}/comentarios
         [HttpGet("{livroId}/comentarios")]
         public IActionResult BuscarComentariosDoLivro(int livroId)
         {
@@ -172,7 +173,7 @@ namespace WebApiLivrariaVirtual.Controllers
             return Ok(listaComentarios.ToList());
         }
 
-        // GET v1/livraria-virtual/livros/{livroId}/comentarios/{comentarioId}
+        // GET /livraria-virtual/livros/{livroId}/comentarios/{comentarioId}
         [HttpGet("{livroId}/comentarios/{comentarioId}")]
         public IActionResult BuscarComentarioDoLivro(int livroId, int comentarioId)
         {
@@ -189,7 +190,7 @@ namespace WebApiLivrariaVirtual.Controllers
             return Ok(comentario);
         }
 
-        // POST v1/livraria-virtual/livros
+        // POST /livraria-virtual/livros
         [HttpPost]
         public IActionResult CriarLivro([FromBody] Livro livro)
         {
@@ -209,7 +210,7 @@ namespace WebApiLivrariaVirtual.Controllers
         }
 
 
-        // PUT v1/livraria-virtual/livros/{livroId}
+        // PUT /livraria-virtual/livros/{livroId}
         [HttpPut("{livroId}")]
         public IActionResult AtualizarLivro(int livroId, [FromBody]Livro livro)
         {
@@ -227,7 +228,7 @@ namespace WebApiLivrariaVirtual.Controllers
         }
 
 
-        // DELETE v1/livraria-virtual/livros/{livroId}
+        // DELETE /livraria-virtual/livros/{livroId}
         [HttpDelete("{livroId}")]
         public IActionResult ExcluirLivro(int livroId, [FromBody]Livro livro)
         {
