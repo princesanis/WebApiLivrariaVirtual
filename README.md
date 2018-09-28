@@ -1,4 +1,4 @@
-﻿# WebApiLivrariaVirtual
+﻿# API da Livraria Virtual
  
  Lista de funcionalidades da livraria virtual:
 
